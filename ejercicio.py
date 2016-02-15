@@ -3,11 +3,21 @@
 
 # hola, hola
 
-fd = open('/etc/passwd', 'r')
+fichero = open('/etc/passwd', 'r');
 
-lineas = fd.readlines()
-fd.close()
+lineas = fichero.readlines();
+fichero.close();
+
+diccionario = {};
 
 for linea in lineas:
     elementos = linea.split(':')
-    print elementos[0], elementos[-1][:-1]
+    usuario = elementos[0]
+    shell = elementos[-1][:-1];
+    diccionario[usuario] = shell;
+
+print("La shell de root es: " + diccionario["root"]);
+try:
+	print(diccionario["imaginario"]);
+except:
+	print "El nombre de usuario 'imaginario' no existe"
